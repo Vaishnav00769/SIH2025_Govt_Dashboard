@@ -170,7 +170,7 @@ const Dashboard = () => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
               <label className="text-sm font-medium text-slate-700 mb-2 block">Category</label>
               <Select value={filters.category} onValueChange={(value) => setFilters({...filters, category: value})}>
@@ -225,6 +225,21 @@ const Dashboard = () => {
                 <SelectContent>
                   <SelectItem value="all">All Levels</SelectItem>
                   {Object.entries(escalationLevels).map(([key, config]) => (
+                    <SelectItem key={key} value={key}>{config.name}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
+              <label className="text-sm font-medium text-slate-700 mb-2 block">AI Verification</label>
+              <Select value={filters.verificationStatus} onValueChange={(value) => setFilters({...filters, verificationStatus: value})}>
+                <SelectTrigger>
+                  <SelectValue placeholder="All Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Verification</SelectItem>
+                  {Object.entries(verificationStatusConfig).map(([key, config]) => (
                     <SelectItem key={key} value={key}>{config.name}</SelectItem>
                   ))}
                 </SelectContent>
