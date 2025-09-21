@@ -275,7 +275,9 @@ const IssuesTable = () => {
                   <TableHead className="min-w-48">Title</TableHead>
                   <TableHead>Category</TableHead>
                   <TableHead>Status</TableHead>
+                  <TableHead>AI Status</TableHead>
                   <TableHead>Priority</TableHead>
+                  <TableHead>Reports</TableHead>
                   <TableHead>Location</TableHead>
                   <TableHead>Date</TableHead>
                   <TableHead>Reporter</TableHead>
