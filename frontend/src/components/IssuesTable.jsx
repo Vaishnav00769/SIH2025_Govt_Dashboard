@@ -21,7 +21,7 @@ import {
   Filter,
   X
 } from 'lucide-react';
-import { mockIssues, categoryConfig, statusConfig, priorityConfig, escalationLevels } from '../data/mockData';
+import { mockIssues, categoryConfig, statusConfig, priorityConfig, escalationLevels, verificationStatusConfig } from '../data/mockData';
 import { useToast } from '../hooks/use-toast';
 
 const IssuesTable = () => {
