@@ -218,34 +218,34 @@ const Analytics = () => {
         <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-blue-900">{mockIssues.length}</div>
-            <div className="text-sm text-blue-700">Total Issues</div>
+            <div className="text-sm text-blue-700">Unique Issues</div>
           </CardContent>
         </Card>
         
         <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-green-900">
-              {((mockIssues.filter(i => i.status === 'resolved').length / mockIssues.length) * 100).toFixed(1)}%
+              {mockIssues.filter(i => i.aiVerificationStatus === 'verified').length}
             </div>
-            <div className="text-sm text-green-700">Resolution Rate</div>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
-          <CardContent className="p-4 text-center">
-            <div className="text-2xl font-bold text-orange-900">
-              {mockIssues.filter(i => i.priority === 'critical' || i.priority === 'high').length}
-            </div>
-            <div className="text-sm text-orange-700">High Priority</div>
+            <div className="text-sm text-green-700">AI Verified Issues</div>
           </CardContent>
         </Card>
         
         <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
           <CardContent className="p-4 text-center">
             <div className="text-2xl font-bold text-purple-900">
-              {mockIssues.filter(i => i.category === 'ai_miscellaneous').length}
+              {mockIssues.reduce((sum, issue) => sum + issue.reportCount, 0)}
             </div>
-            <div className="text-sm text-purple-700">AI Categorized</div>
+            <div className="text-sm text-purple-700">Total Reports</div>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
+          <CardContent className="p-4 text-center">
+            <div className="text-2xl font-bold text-orange-900">
+              {mockIssues.filter(i => i.frequency > 10).length}
+            </div>
+            <div className="text-sm text-orange-700">High-Frequency Issues</div>
           </CardContent>
         </Card>
       </div>
