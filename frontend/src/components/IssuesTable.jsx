@@ -30,7 +30,8 @@ const IssuesTable = () => {
     category: 'all',
     status: 'all',
     priority: 'all',
-    escalationLevel: 'all'
+    escalationLevel: 'all',
+    verificationStatus: 'all'
   });
   const [sortBy, setSortBy] = useState('dateReported');
   const [sortOrder, setSortOrder] = useState('desc');
