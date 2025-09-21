@@ -78,7 +78,7 @@ const IssueMap = ({ issues }) => {
         <Marker
           key={issue.id}
           position={[issue.location.lat, issue.location.lng]}
-          icon={createCustomIcon(issue.category)}
+          icon={createCustomIcon(issue.category, issue.frequency)}
         >
           <Popup maxWidth={400} className="custom-popup">
             <div className="p-2 max-w-sm">
