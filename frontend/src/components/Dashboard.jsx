@@ -45,8 +45,11 @@ const Dashboard = () => {
     const pending = filteredIssues.filter(issue => issue.status === 'pending').length;
     const critical = filteredIssues.filter(issue => issue.priority === 'critical').length;
     const escalated = filteredIssues.filter(issue => issue.status === 'escalated').length;
+    const verified = filteredIssues.filter(issue => issue.aiVerificationStatus === 'verified').length;
+    const highFrequency = filteredIssues.filter(issue => issue.frequency > 10).length;
+    const totalReports = filteredIssues.reduce((sum, issue) => sum + issue.reportCount, 0);
     
-    return { total, resolved, pending, critical, escalated };
+    return { total, resolved, pending, critical, escalated, verified, highFrequency, totalReports };
   }, [filteredIssues]);
 
   const clearFilters = () => {
