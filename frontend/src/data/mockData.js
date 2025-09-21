@@ -469,6 +469,14 @@ export const statusConfig = {
   escalated: { name: "Escalated", color: "#8b5cf6" }
 };
 
+export const verificationStatusConfig = {
+  verified: { name: "AI Verified", color: "#22c55e", icon: "CheckCircle2" },
+  pending_verification: { name: "Pending Verification", color: "#eab308", icon: "Clock" },
+  ai_verifying: { name: "AI Verifying", color: "#3b82f6", icon: "RefreshCw" },
+  flagged_suspicious: { name: "Flagged Suspicious", color: "#ef4444", icon: "AlertTriangle" },
+  manual_verification: { name: "Manual Review", color: "#f97316", icon: "Eye" }
+};
+
 export const priorityConfig = {
   low: { name: "Low", color: "#22c55e" },
   medium: { name: "Medium", color: "#eab308" },
