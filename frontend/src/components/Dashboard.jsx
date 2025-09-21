@@ -57,7 +57,8 @@ const Dashboard = () => {
       category: 'all',
       status: 'all', 
       priority: 'all',
-      escalationLevel: 'all'
+      escalationLevel: 'all',
+      verificationStatus: 'all'
     });
   };
 
