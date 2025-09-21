@@ -181,9 +181,19 @@ export const mockIssues = [
       name: "Manoj Yadav",
       id: "RAN005"
     },
-    frequency: "urgent",
+    frequency: 22,
+    reportCount: 22,
+    aiVerificationStatus: "verified",
+    verificationScore: 97,
+    isDuplicate: false,
+    duplicateReports: Array.from({length: 22}, (_, i) => ({
+      reporterId: `RAN${String(46 + i).padStart(3, '0')}`,
+      date: new Date(Date.now() - (21-i) * 2 * 60 * 60 * 1000).toISOString(),
+      similarity: 85 + Math.floor(Math.random() * 15)
+    })),
     statusHistory: [
       { status: "pending", date: "2025-01-16T07:30:00Z", note: "Emergency reported" },
+      { status: "ai_verified", date: "2025-01-16T07:32:00Z", note: "AI verified with 97% confidence" },
       { status: "in_progress", date: "2025-01-16T09:00:00Z", note: "Water board team investigating" }
     ]
   },
@@ -205,9 +215,22 @@ export const mockIssues = [
       name: "Deepak Pandey",
       id: "RAN006"
     },
-    frequency: "technical_failure",
+    frequency: 6,
+    reportCount: 6,
+    aiVerificationStatus: "verified",
+    verificationScore: 91,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN006", date: "2025-01-17T06:00:00Z", similarity: 100 },
+      { reporterId: "RAN068", date: "2025-01-17T06:15:00Z", similarity: 94 },
+      { reporterId: "RAN069", date: "2025-01-17T06:45:00Z", similarity: 87 },
+      { reporterId: "RAN070", date: "2025-01-17T07:20:00Z", similarity: 92 },
+      { reporterId: "RAN071", date: "2025-01-17T08:10:00Z", similarity: 89 },
+      { reporterId: "RAN072", date: "2025-01-17T09:30:00Z", similarity: 86 }
+    ],
     statusHistory: [
-      { status: "pending", date: "2025-01-17T06:00:00Z", note: "Transformer failure reported" }
+      { status: "pending", date: "2025-01-17T06:00:00Z", note: "Transformer failure reported" },
+      { status: "ai_verified", date: "2025-01-17T06:05:00Z", note: "AI verified with 91% confidence" }
     ]
   },
   {
@@ -228,9 +251,18 @@ export const mockIssues = [
       name: "Sita Ram",
       id: "RAN007"
     },
-    frequency: "infrastructure_damage",
+    frequency: 2,
+    reportCount: 2,
+    aiVerificationStatus: "pending_verification",
+    verificationScore: 65,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN007", date: "2025-01-15T12:00:00Z", similarity: 100 },
+      { reporterId: "RAN073", date: "2025-01-16T14:30:00Z", similarity: 81 }
+    ],
     statusHistory: [
-      { status: "pending", date: "2025-01-15T12:00:00Z", note: "Infrastructure damage reported" }
+      { status: "pending", date: "2025-01-15T12:00:00Z", note: "Infrastructure damage reported" },
+      { status: "ai_verifying", date: "2025-01-15T12:05:00Z", note: "AI verification in progress" }
     ]
   },
   {
@@ -251,9 +283,20 @@ export const mockIssues = [
       name: "Kavita Devi",
       id: "RAN008"
     },
-    frequency: "maintenance_issue",
+    frequency: 4,
+    reportCount: 4,
+    aiVerificationStatus: "verified",
+    verificationScore: 82,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN008", date: "2025-01-13T14:30:00Z", similarity: 100 },
+      { reporterId: "RAN074", date: "2025-01-14T09:15:00Z", similarity: 88 },
+      { reporterId: "RAN075", date: "2025-01-15T16:45:00Z", similarity: 85 },
+      { reporterId: "RAN076", date: "2025-01-17T11:20:00Z", similarity: 83 }
+    ],
     statusHistory: [
-      { status: "pending", date: "2025-01-13T14:30:00Z", note: "Sanitation facility issue reported" }
+      { status: "pending", date: "2025-01-13T14:30:00Z", note: "Sanitation facility issue reported" },
+      { status: "ai_verified", date: "2025-01-13T14:35:00Z", note: "AI verified with 82% confidence" }
     ]
   },
   {
@@ -274,9 +317,23 @@ export const mockIssues = [
       name: "Ravi Shankar",
       id: "RAN009"
     },
-    frequency: "violation",
+    frequency: 7,
+    reportCount: 7,
+    aiVerificationStatus: "verified",
+    verificationScore: 94,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN009", date: "2025-01-11T09:45:00Z", similarity: 100 },
+      { reporterId: "RAN077", date: "2025-01-12T08:30:00Z", similarity: 91 },
+      { reporterId: "RAN078", date: "2025-01-13T15:20:00Z", similarity: 89 },
+      { reporterId: "RAN079", date: "2025-01-14T11:45:00Z", similarity: 87 },
+      { reporterId: "RAN080", date: "2025-01-15T16:10:00Z", similarity: 93 },
+      { reporterId: "RAN081", date: "2025-01-16T10:25:00Z", similarity: 90 },
+      { reporterId: "RAN082", date: "2025-01-17T14:40:00Z", similarity: 88 }
+    ],
     statusHistory: [
       { status: "pending", date: "2025-01-11T09:45:00Z", note: "Encroachment reported" },
+      { status: "ai_verified", date: "2025-01-11T09:50:00Z", note: "AI verified with 94% confidence" },
       { status: "escalated", date: "2025-01-16T11:00:00Z", note: "Escalated to district collector for action" }
     ]
   },
@@ -298,9 +355,19 @@ export const mockIssues = [
       name: "Dr. Anita Sharma",
       id: "RAN010"
     },
-    frequency: "environmental_hazard",
+    frequency: 18,
+    reportCount: 18,
+    aiVerificationStatus: "verified",
+    verificationScore: 96,
+    isDuplicate: false,
+    duplicateReports: Array.from({length: 18}, (_, i) => ({
+      reporterId: `RAN${String(83 + i).padStart(3, '0')}`,
+      date: new Date(Date.now() - (17-i) * 6 * 60 * 60 * 1000).toISOString(),
+      similarity: 80 + Math.floor(Math.random() * 20)
+    })),
     statusHistory: [
       { status: "pending", date: "2025-01-09T08:00:00Z", note: "Environmental violation reported" },
+      { status: "ai_verified", date: "2025-01-09T08:05:00Z", note: "AI verified with 96% confidence" },
       { status: "in_progress", date: "2025-01-14T10:00:00Z", note: "Pollution control board investigating" }
     ]
   },
@@ -322,9 +389,17 @@ export const mockIssues = [
       name: "Rekha Singh",
       id: "RAN011"
     },
-    frequency: "safety_hazard",
+    frequency: 1,
+    reportCount: 1,
+    aiVerificationStatus: "flagged_suspicious",
+    verificationScore: 45,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN011", date: "2025-01-16T15:20:00Z", similarity: 100 }
+    ],
     statusHistory: [
-      { status: "pending", date: "2025-01-16T15:20:00Z", note: "AI Auto-categorized: Public Park Equipment" }
+      { status: "pending", date: "2025-01-16T15:20:00Z", note: "AI Auto-categorized: Public Park Equipment" },
+      { status: "ai_flagged", date: "2025-01-16T15:25:00Z", note: "AI flagged for manual verification - low confidence score" }
     ]
   }
 ];
