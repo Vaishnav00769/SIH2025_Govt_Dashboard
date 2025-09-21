@@ -38,12 +38,30 @@ const Analytics = () => {
     };
   });
 
-  // Escalation data for area chart
-  const escalationData = Object.entries(escalationLevels).map(([key, config]) => ({
-    level: config.name,
-    count: mockIssues.filter(issue => issue.escalationLevel === key).length,
+  // Verification status data for pie chart
+  const verificationData = Object.entries(verificationStatusConfig).map(([key, config]) => ({
+    name: config.name,
+    value: mockIssues.filter(issue => issue.aiVerificationStatus === key).length,
     color: config.color
-  }));
+  })).filter(item => item.value > 0);
+
+  // Frequency distribution data
+  const frequencyData = [
+    { range: '1 Report', count: mockIssues.filter(i => i.frequency === 1).length },
+    { range: '2-5 Reports', count: mockIssues.filter(i => i.frequency >= 2 && i.frequency <= 5).length },
+    { range: '6-10 Reports', count: mockIssues.filter(i => i.frequency >= 6 && i.frequency <= 10).length },
+    { range: '11-15 Reports', count: mockIssues.filter(i => i.frequency >= 11 && i.frequency <= 15).length },
+    { range: '15+ Reports', count: mockIssues.filter(i => i.frequency > 15).length }
+  ].filter(item => item.count > 0);
+
+  // AI Detection metrics
+  const aiMetrics = {
+    totalReports: mockIssues.reduce((sum, issue) => sum + issue.reportCount, 0),
+    uniqueIssues: mockIssues.length,
+    duplicatesDetected: mockIssues.reduce((sum, issue) => sum + (issue.reportCount - 1), 0),
+    verificationRate: mockIssues.filter(i => i.aiVerificationStatus === 'verified').length / mockIssues.length,
+    avgVerificationScore: mockIssues.reduce((sum, issue) => sum + issue.verificationScore, 0) / mockIssues.length
+  };
 
   return (
     <div className="p-6 space-y-6">
