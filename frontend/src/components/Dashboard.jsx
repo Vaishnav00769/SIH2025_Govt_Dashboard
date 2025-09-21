@@ -67,7 +67,7 @@ const Dashboard = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
         <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
@@ -84,10 +84,46 @@ const Dashboard = () => {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-green-700">Resolved</p>
-                <p className="text-2xl font-bold text-green-900">{stats.resolved}</p>
+                <p className="text-sm font-medium text-green-700">AI Verified</p>
+                <p className="text-2xl font-bold text-green-900">{stats.verified}</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-600" />
+              <Shield className="h-8 w-8 text-green-600" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-purple-700">Total Reports</p>
+                <p className="text-2xl font-bold text-purple-900">{stats.totalReports}</p>
+              </div>
+              <Users className="h-8 w-8 text-purple-600" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-orange-700">High Frequency</p>
+                <p className="text-2xl font-bold text-orange-900">{stats.highFrequency}</p>
+              </div>
+              <TrendingUp className="h-8 w-8 text-orange-600" />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-to-r from-emerald-50 to-emerald-100 border-emerald-200">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-emerald-700">Resolved</p>
+                <p className="text-2xl font-bold text-emerald-900">{stats.resolved}</p>
+              </div>
+              <CheckCircle className="h-8 w-8 text-emerald-600" />
             </div>
           </CardContent>
         </Card>
@@ -104,26 +140,14 @@ const Dashboard = () => {
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200">
+        <Card className="bg-gradient-to-r from-pink-50 to-pink-100 border-pink-200">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-orange-700">Critical</p>
-                <p className="text-2xl font-bold text-orange-900">{stats.critical}</p>
+                <p className="text-sm font-medium text-pink-700">Critical</p>
+                <p className="text-2xl font-bold text-pink-900">{stats.critical}</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-orange-600" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-purple-700">Escalated</p>
-                <p className="text-2xl font-bold text-purple-900">{stats.escalated}</p>
-              </div>
-              <TrendingUp className="h-8 w-8 text-purple-600" />
+              <AlertTriangle className="h-8 w-8 text-pink-600" />
             </div>
           </CardContent>
         </Card>
