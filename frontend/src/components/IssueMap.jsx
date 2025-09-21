@@ -80,24 +80,54 @@ const IssueMap = ({ issues }) => {
           position={[issue.location.lat, issue.location.lng]}
           icon={createCustomIcon(issue.category, issue.frequency)}
         >
-          <Popup maxWidth={400} className="custom-popup">
-            <div className="p-2 max-w-sm">
+          <Popup maxWidth={420} className="custom-popup">
+            <div className="p-3 max-w-md">
               {/* Header */}
               <div className="flex items-start justify-between mb-3">
                 <h3 className="font-semibold text-slate-800 text-sm leading-tight pr-2">
                   {issue.title}
                 </h3>
-                <Badge 
-                  variant="outline" 
-                  style={{ 
-                    backgroundColor: statusConfig[issue.status]?.color + '20',
-                    borderColor: statusConfig[issue.status]?.color,
-                    color: statusConfig[issue.status]?.color
-                  }}
-                  className="text-xs whitespace-nowrap"
-                >
-                  {statusConfig[issue.status]?.name}
-                </Badge>
+                <div className="flex flex-col gap-1">
+                  <Badge 
+                    variant="outline" 
+                    style={{ 
+                      backgroundColor: statusConfig[issue.status]?.color + '20',
+                      borderColor: statusConfig[issue.status]?.color,
+                      color: statusConfig[issue.status]?.color
+                    }}
+                    className="text-xs whitespace-nowrap"
+                  >
+                    {statusConfig[issue.status]?.name}
+                  </Badge>
+                  <Badge 
+                    variant="outline" 
+                    style={{ 
+                      backgroundColor: verificationStatusConfig[issue.aiVerificationStatus]?.color + '20',
+                      borderColor: verificationStatusConfig[issue.aiVerificationStatus]?.color,
+                      color: verificationStatusConfig[issue.aiVerificationStatus]?.color
+                    }}
+                    className="text-xs whitespace-nowrap"
+                  >
+                    {verificationStatusConfig[issue.aiVerificationStatus]?.name}
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Verification Score & Frequency */}
+              <div className="flex items-center gap-4 mb-3 p-2 bg-slate-50 rounded-lg">
+                <div className="flex items-center gap-1 text-xs">
+                  <Shield className="h-3 w-3 text-blue-600" />
+                  <span className="font-medium">AI Score:</span>
+                  <span className={`font-bold ${issue.verificationScore >= 85 ? 'text-green-600' : 
+                    issue.verificationScore >= 70 ? 'text-yellow-600' : 'text-red-600'}`}>
+                    {issue.verificationScore}%
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs">
+                  <Users className="h-3 w-3 text-purple-600" />
+                  <span className="font-medium">Reports:</span>
+                  <span className="font-bold text-purple-600">{issue.reportCount}</span>
+                </div>
               </div>
 
               {/* Description */}
@@ -154,9 +184,30 @@ const IssueMap = ({ issues }) => {
                 </div>
               </div>
 
+              {/* Warning for suspicious issues */}
+              {issue.aiVerificationStatus === 'flagged_suspicious' && (
+                <div className="mb-3 p-2 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center gap-2 text-xs text-red-700">
+                    <AlertTriangle className="h-3 w-3" />
+                    <span className="font-medium">Flagged for Review</span>
+                  </div>
+                  <p className="text-xs text-red-600 mt-1">Low verification score - requires manual verification</p>
+                </div>
+              )}
+
+              {/* Duplicate Reports Info */}
+              {issue.duplicateReports && issue.duplicateReports.length > 1 && (
+                <div className="mb-3 p-2 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="text-xs text-blue-700 font-medium mb-1">Duplicate Detection</div>
+                  <p className="text-xs text-blue-600">
+                    AI found {issue.duplicateReports.length} similar reports from different users
+                  </p>
+                </div>
+              )}
+
               {/* Action Buttons */}
               <div className="flex gap-2 pt-2 border-t border-slate-200">
-                {issue.status === 'pending' && (
+                {issue.status === 'pending' && issue.aiVerificationStatus === 'verified' && (
                   <Button 
                     size="sm" 
                     className="text-xs bg-blue-600 hover:bg-blue-700"
