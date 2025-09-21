@@ -315,6 +315,21 @@ const IssuesTable = () => {
                       </Badge>
                     </TableCell>
                     <TableCell>
+                      <div className="flex items-center gap-1">
+                        <Badge 
+                          style={{ 
+                            backgroundColor: verificationStatusConfig[issue.aiVerificationStatus]?.color + '20',
+                            borderColor: verificationStatusConfig[issue.aiVerificationStatus]?.color,
+                            color: verificationStatusConfig[issue.aiVerificationStatus]?.color
+                          }}
+                          className="text-xs"
+                        >
+                          {verificationStatusConfig[issue.aiVerificationStatus]?.name}
+                        </Badge>
+                        <span className="text-xs text-slate-500">({issue.verificationScore}%)</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>
                       <Badge 
                         style={{ 
                           backgroundColor: priorityConfig[issue.priority]?.color + '20',
@@ -325,6 +340,15 @@ const IssuesTable = () => {
                       >
                         {priorityConfig[issue.priority]?.name}
                       </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-1 text-xs">
+                        <span className="font-bold text-purple-600">{issue.reportCount}</span>
+                        <span className="text-slate-500">reports</span>
+                        {issue.frequency > 10 && (
+                          <Badge className="bg-red-100 text-red-700 text-xs">High</Badge>
+                        )}
+                      </div>
                     </TableCell>
                     <TableCell className="text-xs max-w-32 truncate">
                       {issue.location.address}
