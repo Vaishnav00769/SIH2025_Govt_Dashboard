@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { Calendar, MapPin, User, TrendingUp, Clock } from 'lucide-react';
-import { categoryConfig, statusConfig, priorityConfig, escalationLevels } from '../data/mockData';
+import { categoryConfig, statusConfig, priorityConfig, escalationLevels, verificationStatusConfig } from '../data/mockData';
 import L from 'leaflet';
 
 // Fix for default markers
