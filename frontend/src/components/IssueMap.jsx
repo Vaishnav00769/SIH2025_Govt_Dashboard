@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
-import { Calendar, MapPin, User, TrendingUp, Clock } from 'lucide-react';
+import { Calendar, MapPin, User, TrendingUp, Clock, Users, Shield, AlertTriangle } from 'lucide-react';
 import { categoryConfig, statusConfig, priorityConfig, escalationLevels, verificationStatusConfig } from '../data/mockData';
 import L from 'leaflet';
 
