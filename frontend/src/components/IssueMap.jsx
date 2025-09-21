@@ -14,23 +14,35 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Custom marker icons for different categories
-const createCustomIcon = (category) => {
+// Custom marker icons for different categories with frequency indication
+const createCustomIcon = (category, frequency) => {
   const config = categoryConfig[category];
   const color = config?.color || '#3b82f6';
+  
+  // Size based on frequency
+  let size = 25;
+  if (frequency > 15) size = 35;
+  else if (frequency > 10) size = 30;
+  else if (frequency > 5) size = 28;
   
   return L.divIcon({
     className: 'custom-div-icon',
     html: `<div style="
       background-color: ${color};
-      width: 25px;
-      height: 25px;
+      width: ${size}px;
+      height: ${size}px;
       border-radius: 50%;
       border: 3px solid white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    "></div>`,
-    iconSize: [25, 25],
-    iconAnchor: [12.5, 12.5]
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: ${frequency > 10 ? '10px' : '8px'};
+    ">${frequency}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size/2, size/2]
   });
 };
 
