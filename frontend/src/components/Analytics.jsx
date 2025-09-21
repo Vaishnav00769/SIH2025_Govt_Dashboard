@@ -107,17 +107,17 @@ const Analytics = () => {
           </CardContent>
         </Card>
 
-        {/* Issues by Status - Pie Chart */}
+        {/* AI Verification Status - Pie Chart */}
         <Card>
           <CardHeader>
-            <CardTitle>Issues by Status</CardTitle>
-            <CardDescription>Current status distribution of all reported issues</CardDescription>
+            <CardTitle>AI Verification Status</CardTitle>
+            <CardDescription>Distribution of AI verification results for all issues</CardDescription>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
-                  data={statusData}
+                  data={verificationData}
                   cx="50%"
                   cy="50%"
                   labelLine={false}
@@ -126,12 +126,31 @@ const Analytics = () => {
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {statusData.map((entry, index) => (
+                  {verificationData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
                 <Tooltip />
               </PieChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        {/* Report Frequency Distribution */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Report Frequency Distribution</CardTitle>
+            <CardDescription>How many times issues have been reported (AI deduplication)</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={frequencyData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="range" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="count" fill="#8b5cf6" />
+              </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
@@ -160,30 +179,39 @@ const Analytics = () => {
             </ResponsiveContainer>
           </CardContent>
         </Card>
-
-        {/* Escalation Levels - Area Chart */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Issues by Escalation Level</CardTitle>
-            <CardDescription>Distribution of issues across different authority levels</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={escalationData} layout="horizontal">
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="number" />
-                <YAxis dataKey="level" type="category" width={80} />
-                <Tooltip />
-                <Bar dataKey="count">
-                  {escalationData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
       </div>
+
+      {/* AI Performance Metrics */}
+      <Card>
+        <CardHeader>
+          <CardTitle>AI Performance Metrics</CardTitle>
+          <CardDescription>Insights into AI deduplication and verification performance</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <div className="text-center p-4 bg-blue-50 rounded-lg">
+              <div className="text-3xl font-bold text-blue-900">{aiMetrics.totalReports}</div>
+              <div className="text-sm text-blue-700">Total Reports Received</div>
+            </div>
+            <div className="text-center p-4 bg-purple-50 rounded-lg">
+              <div className="text-3xl font-bold text-purple-900">{aiMetrics.uniqueIssues}</div>
+              <div className="text-sm text-purple-700">Unique Issues Identified</div>
+            </div>
+            <div className="text-center p-4 bg-green-50 rounded-lg">
+              <div className="text-3xl font-bold text-green-900">{aiMetrics.duplicatesDetected}</div>
+              <div className="text-sm text-green-700">Duplicates Detected</div>
+            </div>
+            <div className="text-center p-4 bg-yellow-50 rounded-lg">
+              <div className="text-3xl font-bold text-yellow-900">{(aiMetrics.verificationRate * 100).toFixed(1)}%</div>
+              <div className="text-sm text-yellow-700">Verification Rate</div>
+            </div>
+            <div className="text-center p-4 bg-red-50 rounded-lg">
+              <div className="text-3xl font-bold text-red-900">{aiMetrics.avgVerificationScore.toFixed(0)}%</div>
+              <div className="text-sm text-red-700">Avg AI Confidence</div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Summary Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
