@@ -19,9 +19,24 @@ export const mockIssues = [
       name: "Rajesh Kumar",
       id: "RAN001"
     },
-    frequency: "multiple_complaints",
+    frequency: 8,
+    reportCount: 8,
+    aiVerificationStatus: "verified",
+    verificationScore: 95,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN001", date: "2025-01-15T10:30:00Z", similarity: 100 },
+      { reporterId: "RAN012", date: "2025-01-16T08:15:00Z", similarity: 87 },
+      { reporterId: "RAN013", date: "2025-01-16T19:45:00Z", similarity: 92 },
+      { reporterId: "RAN014", date: "2025-01-17T07:20:00Z", similarity: 89 },
+      { reporterId: "RAN015", date: "2025-01-17T18:30:00Z", similarity: 95 },
+      { reporterId: "RAN016", date: "2025-01-18T06:45:00Z", similarity: 88 },
+      { reporterId: "RAN017", date: "2025-01-18T20:10:00Z", similarity: 91 },
+      { reporterId: "RAN018", date: "2025-01-19T09:25:00Z", similarity: 93 }
+    ],
     statusHistory: [
-      { status: "pending", date: "2025-01-15T10:30:00Z", note: "Issue reported by citizen" }
+      { status: "pending", date: "2025-01-15T10:30:00Z", note: "Issue reported by citizen" },
+      { status: "ai_verified", date: "2025-01-15T10:35:00Z", note: "AI verified with 95% confidence" }
     ]
   },
   {
