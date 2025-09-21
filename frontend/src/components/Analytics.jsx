@@ -63,6 +63,13 @@ const Analytics = () => {
     avgVerificationScore: mockIssues.reduce((sum, issue) => sum + issue.verificationScore, 0) / mockIssues.length
   };
 
+  // Escalation data for area chart
+  const escalationData = Object.entries(escalationLevels).map(([key, config]) => ({
+    level: config.name,
+    count: mockIssues.filter(issue => issue.escalationLevel === key).length,
+    color: config.color
+  }));
+
   return (
     <div className="p-6 space-y-6">
       <div>
