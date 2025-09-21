@@ -46,7 +46,8 @@ const IssuesTable = () => {
       const matchesFilters = (filters.category === 'all' || issue.category === filters.category) &&
                             (filters.status === 'all' || issue.status === filters.status) &&
                             (filters.priority === 'all' || issue.priority === filters.priority) &&
-                            (filters.escalationLevel === 'all' || issue.escalationLevel === filters.escalationLevel);
+                            (filters.escalationLevel === 'all' || issue.escalationLevel === filters.escalationLevel) &&
+                            (filters.verificationStatus === 'all' || issue.aiVerificationStatus === filters.verificationStatus);
       
       return matchesSearch && matchesFilters;
     });
