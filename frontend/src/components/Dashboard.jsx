@@ -10,10 +10,15 @@ import {
   Clock, 
   TrendingUp,
   Filter,
-  X
+  X,
+  Shield,
+  Users,
+  Eye,
+  RefreshCw,
+  CheckCircle2
 } from 'lucide-react';
 import IssueMap from './IssueMap';
-import { mockIssues, categoryConfig, statusConfig, priorityConfig, escalationLevels } from '../data/mockData';
+import { mockIssues, categoryConfig, statusConfig, priorityConfig, escalationLevels, verificationStatusConfig } from '../data/mockData';
 
 const Dashboard = () => {
   const [filters, setFilters] = useState({
