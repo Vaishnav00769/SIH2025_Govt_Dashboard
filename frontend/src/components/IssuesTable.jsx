@@ -224,6 +224,18 @@ const IssuesTable = () => {
               </SelectContent>
             </Select>
 
+            <Select value={filters.verificationStatus} onValueChange={(value) => setFilters({...filters, verificationStatus: value})}>
+              <SelectTrigger>
+                <SelectValue placeholder="AI Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Verification</SelectItem>
+                {Object.entries(verificationStatusConfig).map(([key, config]) => (
+                  <SelectItem key={key} value={key}>{config.name}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
             <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger>
                 <SelectValue placeholder="Sort by" />
