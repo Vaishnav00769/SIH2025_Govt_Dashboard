@@ -57,9 +57,28 @@ export const mockIssues = [
       name: "Sunita Devi",
       id: "RAN002"
     },
-    frequency: "urgent",
+    frequency: 12,
+    reportCount: 12,
+    aiVerificationStatus: "verified",
+    verificationScore: 98,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN002", date: "2025-01-14T14:20:00Z", similarity: 100 },
+      { reporterId: "RAN019", date: "2025-01-14T16:30:00Z", similarity: 94 },
+      { reporterId: "RAN020", date: "2025-01-15T08:45:00Z", similarity: 96 },
+      { reporterId: "RAN021", date: "2025-01-15T12:15:00Z", similarity: 91 },
+      { reporterId: "RAN022", date: "2025-01-16T07:30:00Z", similarity: 89 },
+      { reporterId: "RAN023", date: "2025-01-16T14:20:00Z", similarity: 93 },
+      { reporterId: "RAN024", date: "2025-01-17T09:10:00Z", similarity: 97 },
+      { reporterId: "RAN025", date: "2025-01-17T15:45:00Z", similarity: 92 },
+      { reporterId: "RAN026", date: "2025-01-18T11:30:00Z", similarity: 95 },
+      { reporterId: "RAN027", date: "2025-01-18T17:20:00Z", similarity: 88 },
+      { reporterId: "RAN028", date: "2025-01-19T08:15:00Z", similarity: 94 },
+      { reporterId: "RAN029", date: "2025-01-19T13:50:00Z", similarity: 90 }
+    ],
     statusHistory: [
       { status: "pending", date: "2025-01-14T14:20:00Z", note: "Issue reported" },
+      { status: "ai_verified", date: "2025-01-14T14:25:00Z", note: "AI verified with 98% confidence" },
       { status: "in_progress", date: "2025-01-16T09:00:00Z", note: "Work crew assigned" }
     ]
   },
@@ -81,9 +100,19 @@ export const mockIssues = [
       name: "Amit Singh",
       id: "RAN003"
     },
-    frequency: "regular_issue",
+    frequency: 3,
+    reportCount: 3,
+    aiVerificationStatus: "verified",
+    verificationScore: 78,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN003", date: "2025-01-12T16:45:00Z", similarity: 100 },
+      { reporterId: "RAN030", date: "2025-01-12T18:20:00Z", similarity: 85 },
+      { reporterId: "RAN031", date: "2025-01-13T09:15:00Z", similarity: 83 }
+    ],
     statusHistory: [
       { status: "pending", date: "2025-01-12T16:45:00Z", note: "Issue reported" },
+      { status: "ai_verified", date: "2025-01-12T16:50:00Z", note: "AI verified with 78% confidence" },
       { status: "in_progress", date: "2025-01-13T08:00:00Z", note: "Cleaning crew dispatched" },
       { status: "resolved", date: "2025-01-13T15:30:00Z", note: "Area cleaned and bins emptied" }
     ]
@@ -106,9 +135,31 @@ export const mockIssues = [
       name: "Priya Kumari",
       id: "RAN004"
     },
-    frequency: "seasonal_issue",
+    frequency: 15,
+    reportCount: 15,
+    aiVerificationStatus: "verified",
+    verificationScore: 99,
+    isDuplicate: false,
+    duplicateReports: [
+      { reporterId: "RAN004", date: "2025-01-10T11:15:00Z", similarity: 100 },
+      { reporterId: "RAN032", date: "2025-01-10T13:30:00Z", similarity: 96 },
+      { reporterId: "RAN033", date: "2025-01-10T15:45:00Z", similarity: 94 },
+      { reporterId: "RAN034", date: "2025-01-11T08:20:00Z", similarity: 92 },
+      { reporterId: "RAN035", date: "2025-01-11T12:10:00Z", similarity: 98 },
+      { reporterId: "RAN036", date: "2025-01-11T16:35:00Z", similarity: 91 },
+      { reporterId: "RAN037", date: "2025-01-12T07:15:00Z", similarity: 89 },
+      { reporterId: "RAN038", date: "2025-01-12T14:40:00Z", similarity: 95 },
+      { reporterId: "RAN039", date: "2025-01-13T09:25:00Z", similarity: 93 },
+      { reporterId: "RAN040", date: "2025-01-13T17:50:00Z", similarity: 87 },
+      { reporterId: "RAN041", date: "2025-01-14T11:30:00Z", similarity: 96 },
+      { reporterId: "RAN042", date: "2025-01-15T08:45:00Z", similarity: 94 },
+      { reporterId: "RAN043", date: "2025-01-16T13:20:00Z", similarity: 90 },
+      { reporterId: "RAN044", date: "2025-01-17T10:55:00Z", similarity: 88 },
+      { reporterId: "RAN045", date: "2025-01-18T15:10:00Z", similarity: 92 }
+    ],
     statusHistory: [
       { status: "pending", date: "2025-01-10T11:15:00Z", note: "Issue reported" },
+      { status: "ai_verified", date: "2025-01-10T11:20:00Z", note: "AI verified with 99% confidence" },
       { status: "escalated", date: "2025-01-17T10:00:00Z", note: "Escalated to state level for major drainage work" }
     ]
   },
