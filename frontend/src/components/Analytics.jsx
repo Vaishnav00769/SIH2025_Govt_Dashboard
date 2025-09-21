@@ -6,7 +6,7 @@ import {
   LineChart, Line,
   Area, AreaChart
 } from 'recharts';
-import { mockIssues, categoryConfig, statusConfig, escalationLevels } from '../data/mockData';
+import { mockIssues, categoryConfig, statusConfig, escalationLevels, verificationStatusConfig } from '../data/mockData';
 
 const Analytics = () => {
   // Category data for bar chart
